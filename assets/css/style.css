@@ -268,3 +268,9 @@ img { max-width: 100%; display: block; }
   .e1 { left: 2%; } .e2 { right: 2%; }
   .comp { font-size: 13px; }
 }
+
+/* ---------------------------------------------------------------- vídeo */
+.player { margin: 0 auto; max-width: 980px; }
+.player video { display: block; width: 100%; aspect-ratio: 16 / 9; border-radius: var(--raio); background: var(--noite); box-shadow: var(--sombra); border: 1px solid var(--borda); }
+.player figcaption { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 24px; margin-top: 14px; font-size: 14px; color: var(--tinta-suave); }
+.player figcaption span:first-child { font-family: "JetBrains Mono", monospace; color: var(--menta); }

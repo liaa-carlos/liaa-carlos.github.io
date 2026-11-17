@@ -23,6 +23,7 @@
     </a>
     <button class="menu-btn" aria-label="Abrir menu" aria-expanded="false">☰</button>
     <ul class="links">
+      <li><a href="#video">Vídeo</a></li>
       <li><a href="#contexto">Contexto</a></li>
       <li><a href="#problema">Problema</a></li>
       <li><a href="#proposta">Proposta</a></li>
@@ -47,7 +48,8 @@
       <h1>A foto mostra o carro <span class="grad">que está no cadastro?</span></h1>
       <p class="lead">O <b>PampaVision</b> usa visão computacional para reconhecer o <b>modelo</b> e a <b>cor</b> do veículo nas fotos de vistoria e conferir com o que foi registrado. Quando não bate, a foto vai para um olhar humano.</p>
       <div class="acoes">
-        <a class="btn primario" href="#proposta">Ver a proposta</a>
+        <a class="btn primario" href="#video">▶ Assistir ao vídeo (3 min)</a>
+        <a class="btn" href="#proposta">Ver a proposta</a>
         <a class="btn" href="#evolucao">Acompanhar a evolução</a>
       </div>
       <dl class="numeros">
@@ -84,7 +86,27 @@
       </figcaption>
     </figure>
   </div>
-  <a class="rolar" href="#contexto" aria-label="Rolar para o contexto">↓</a>
+  <a class="rolar" href="#video" aria-label="Rolar para o vídeo">↓</a>
+</section>
+
+<!-- ============================================================ VÍDEO -->
+<section class="secao video" id="video">
+  <div class="cab">
+    <p class="kicker">O projeto em 3 minutos</p>
+    <h2>Vídeo-resumo animado</h2>
+    <p class="sub">Problema, proposta, dados, resultados e próximos passos, com narração e legenda em português. Nenhuma foto real de vistoria aparece: só ilustrações e números agregados.</p>
+  </div>
+  <figure class="player revelar">
+    <video controls preload="metadata" playsinline poster="assets/video/pampavision_3min_poster.jpg">
+      <source src="assets/video/pampavision_3min.mp4" type="video/mp4">
+      <track kind="captions" src="assets/video/pampavision_3min.vtt" srclang="pt-BR" label="Português" default>
+      Seu navegador não reproduz vídeo. <a href="assets/video/pampavision_3min.mp4">Baixe o MP4</a>.
+    </video>
+    <figcaption>
+      <span>2 min 58 s · 1080p · legenda em português</span>
+      <span>Feito com apoio de IA: roteiro, telas e animação gerados por código com o Claude; voz neural pt-BR (Microsoft); montagem com ffmpeg.</span>
+    </figcaption>
+  </figure>
 </section>
 
 <!-- ============================================================ CONTEXTO -->

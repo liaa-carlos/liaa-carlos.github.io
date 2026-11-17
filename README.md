@@ -13,8 +13,11 @@ liaa-carlos.github.io/
     ├── css/style.css     visual, temas claro e escuro, telas pequenas
     ├── js/dados.js       O QUE MUDA: marcos, funil, próximos passos, data
     ├── js/main.js        interações (menu, contadores, linha do tempo)
-    └── img/              favicon e o guia de registro fotográfico
+    ├── img/              favicon e o guia de registro fotográfico
+    └── video/            vídeo-resumo de 3 min (MP4), pôster e legenda (WebVTT)
 ```
+
+O vídeo é gerado pelo script `src/gerar_video_retrospectiva_v2.py` do projeto. Para trocar, substitua os três arquivos de `assets/video/` mantendo os nomes. O upload pelo navegador do GitHub aceita arquivos de até 25 MB; o vídeo atual tem 7,9 MB.
 
 ## Atualizar ao longo do semestre
 
