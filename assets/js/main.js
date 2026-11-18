@@ -3,7 +3,22 @@
   "use strict";
   const $ = (s, el = document) => el.querySelector(s);
   const $$ = (s, el = document) => Array.from(el.querySelectorAll(s));
-  const fmt = (n, casas = 0) => n.toLocaleString("pt-BR", { minimumFractionDigits: casas, maximumFractionDigits: casas });
+  /* idioma da página: <html lang="pt-BR | en | es"> */
+  const LANG = (document.documentElement.lang || "pt").slice(0, 2);
+  const LOCAL = { pt: "pt-BR", en: "en-US", es: "es-AR" }[LANG] || "pt-BR";
+  const TXTS = {
+    pt: { semestre: (p, n) => `${p}% do semestre · ${n} marcos registrados`,
+          sit: { feito: "feito", andamento: "em andamento", planejado: "planejado" },
+          tags: {} },
+    en: { semestre: (p, n) => `${p}% of the semester · ${n} milestones recorded`,
+          sit: { feito: "done", andamento: "in progress", planejado: "planned" },
+          tags: { "decisão": "decision", dados: "data", resultado: "result", ferramentas: "tools", entrega: "delivery", "ética": "ethics" } },
+    es: { semestre: (p, n) => `${p}% del semestre · ${n} hitos registrados`,
+          sit: { feito: "hecho", andamento: "en curso", planejado: "planificado" },
+          tags: { "decisão": "decisión", dados: "datos", resultado: "resultado", ferramentas: "herramientas", entrega: "entrega", "ética": "ética" } },
+  };
+  const TXT = TXTS[LANG] || TXTS.pt;
+  const fmt = (n, casas = 0) => n.toLocaleString(LOCAL, { minimumFractionDigits: casas, maximumFractionDigits: casas });
   const reduzir = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   /* ---------------------------------------------------------------- tema */
@@ -87,7 +102,7 @@
       li.className = "marco" + (i % 2 ? " dir" : "");
       li.innerHTML =
         `<div class="ponto"></div><article><time>${m.data}</time><h3></h3><p></p>` +
-        `<div class="tags">${m.tags.map(t => `<span class="t t-${t.normalize("NFD").replace(/[^a-z]/gi, "")}">${t}</span>`).join("")}</div></article>`;
+        `<div class="tags">${m.tags.map(t => `<span class="t t-${t.normalize("NFD").replace(/[^a-z]/gi, "")}">${TXT.tags[t] || t}</span>`).join("")}</div></article>`;
       li.querySelector("h3").textContent = m.titulo;
       li.querySelector("p").textContent = m.texto;
       lt.appendChild(li);
@@ -106,7 +121,7 @@
     const ini = new Date(S.inicio), fim = new Date(S.fim), hoje = new Date();
     const p = Math.max(0, Math.min(1, (hoje - ini) / (fim - ini)));
     $(".semestre .barra span").style.width = (p * 100).toFixed(1) + "%";
-    $(".semestre-txt").textContent = `${Math.round(p * 100)}% do semestre · ${(window.MARCOS || []).length} marcos registrados`;
+    $(".semestre-txt").textContent = TXT.semestre(Math.round(p * 100), (window.MARCOS || []).length);
   }
 
   /* ----------------------------------------------------------- funil */
@@ -123,7 +138,7 @@
   });
 
   /* ----------------------------------------------------------- próximos passos */
-  const nomes = { feito: "feito", andamento: "em andamento", planejado: "planejado" };
+  const nomes = TXT.sit;
   const passos = $("#passos");
   (window.PASSOS || []).forEach(p => {
     const a = document.createElement("article");

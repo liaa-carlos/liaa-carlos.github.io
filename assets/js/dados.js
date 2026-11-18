@@ -66,7 +66,7 @@ window.MARCOS = [
     texto: "Este site, para acompanhar o projeto e apoiar a apresentação final.",
     tags: ["entrega"] },
   { data: "17/11", titulo: "Vídeos com IA",
-    texto: "Retrospectiva de 2 minutos e vídeo-resumo animado de 3 minutos, gerados por código: telas e animação desenhadas em Python, voz neural em português e montagem com ffmpeg.",
+    texto: "Retrospectiva de 2 minutos e vídeo-resumo animado de 3 minutos em três idiomas, gerados por código: telas e animação desenhadas em Python, voz neural em português e montagem com ffmpeg.",
     tags: ["entrega"] },
 ];
 

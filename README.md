@@ -19,9 +19,21 @@ liaa-carlos.github.io/
 
 O vídeo é gerado pelo script `src/gerar_video_retrospectiva_v2.py` do projeto. Para trocar, substitua os três arquivos de `assets/video/` mantendo os nomes. O upload pelo navegador do GitHub aceita arquivos de até 25 MB; o vídeo atual tem 7,9 MB.
 
+## Três idiomas
+
+| Idioma | Página | Dados | Vídeo |
+| --- | --- | --- | --- |
+| Português | `index.html` | `assets/js/dados.js` | `assets/video/pampavision_3min.*` |
+| English | `en/index.html` | `assets/js/dados.en.js` | `assets/video/pampavision_3min_en.*` |
+| Español | `es/index.html` | `assets/js/dados.es.js` | `assets/video/pampavision_3min_es.*` |
+
+O seletor PT · EN · ES fica no menu de cada página. O CSS e o `main.js` são os mesmos para as três; o `main.js` lê o idioma em `<html lang>` e ajusta números, situações e rótulos das tags. As tags dos marcos ficam sempre em português nos três arquivos de dados, porque são chaves. Ao mudar um texto ou um marco, mude nos três.
+
+Os vídeos em inglês e espanhol são gerados por `src/gerar_video_retrospectiva_v3.py` no projeto (vozes Christopher e Tomás).
+
 ## Atualizar ao longo do semestre
 
-Edite só `assets/js/dados.js`:
+Edite `assets/js/dados.js` (e as versões `dados.en.js` e `dados.es.js`):
 
 - **Novo marco:** acrescente um item em `MARCOS` com `data`, `titulo`, `texto` e `tags`. As tags possíveis são decisão, dados, resultado, ferramentas, entrega e ética.
 - **Passo concluído:** em `PASSOS`, mude `situacao` para `feito`, `andamento` ou `planejado`.

@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PampaVision · LIAA</title>
+  <meta name="description" content="PampaVision: computer vision to check vehicle model and color in inspection photos. Project for the course AL5162 LIAA, PPGES/Unipampa (Brazil).">
+  <meta property="og:title" content="PampaVision · computer vision in vehicle inspection">
+  <meta property="og:description" content="Context, problem, proposal and the project's progress over the semester.">
+  <link rel="alternate" hreflang="pt-BR" href="https://liaa-carlos.github.io/">
+  <link rel="alternate" hreflang="en" href="https://liaa-carlos.github.io/en/">
+  <link rel="alternate" hreflang="es" href="https://liaa-carlos.github.io/es/">
+  <link rel="icon" href="../assets/img/favicon.svg" type="image/svg+xml">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+
+<header class="topo" id="topo">
+  <nav class="nav">
+    <a class="marca" href="#inicio" aria-label="Home">
+      <img src="../assets/img/favicon.svg" alt="" width="28" height="28">
+      <span>Pampa<b>Vision</b></span>
+    </a>
+    <button class="menu-btn" aria-label="Open menu" aria-expanded="false">☰</button>
+    <ul class="links">
+      <li><a href="#video">Video</a></li>
+      <li><a href="#contexto">Context</a></li>
+      <li><a href="#problema">Problem</a></li>
+      <li><a href="#proposta">Proposal</a></li>
+      <li><a href="#como">How it works</a></li>
+      <li><a href="#evolucao">Progress</a></li>
+      <li><a href="#resultados">Results</a></li>
+      <li><a href="#proximos">Next steps</a></li>
+    </ul>
+    <div class="idiomas" aria-label="Language">
+      <a href="../" lang="pt-BR" title="Português">PT</a>
+      <a href="./" lang="en" aria-current="page" title="English">EN</a>
+      <a href="../es/" lang="es" title="Español">ES</a>
+    </div>
+    <button class="tema" aria-label="Toggle light and dark theme" title="Light/dark theme">◐</button>
+  </nav>
+  <div class="progresso" aria-hidden="true"></div>
+</header>
+
+<main>
+
+<!-- ============================================================ HERO -->
+<section class="heroi" id="inicio">
+  <div class="malha" aria-hidden="true"></div>
+  <div class="heroi-grade">
+    <div class="heroi-texto">
+      <p class="selo">AL5162 · LIAA · PPGES/Unipampa · 2026/2</p>
+      <h1>Does the photo show the car <span class="grad">that is in the registry?</span></h1>
+      <p class="lead"><b>PampaVision</b> uses computer vision to recognize the <b>model</b> and the <b>color</b> of the vehicle in inspection photos and check them against what was registered. When they don't match, the photo goes to a human reviewer.</p>
+      <div class="acoes">
+        <a class="btn primario" href="#video">▶ Watch the video (3 min)</a>
+        <a class="btn" href="#proposta">See the proposal</a>
+        <a class="btn" href="#evolucao">Follow the progress</a>
+      </div>
+      <dl class="numeros">
+        <div><dt><span class="contador" data-alvo="74149">0</span></dt><dd>photos in the training set</dd></div>
+        <div><dt><span class="contador" data-alvo="38">0</span></dt><dd>car models</dd></div>
+        <div><dt><span class="contador" data-alvo="95.1" data-casas="1">0</span>%</dt><dd>model accuracy</dd></div>
+        <div><dt><span class="contador" data-alvo="93.6" data-casas="1">0</span>%</dt><dd>color accuracy</dd></div>
+      </dl>
+    </div>
+
+    <figure class="scanner" aria-label="Illustration: the car being analyzed">
+      <div class="moldura">
+        <i class="c c1"></i><i class="c c2"></i><i class="c c3"></i><i class="c c4"></i>
+        <svg class="carro" viewBox="0 0 400 170" role="img" aria-label="Car silhouette">
+          <defs>
+            <linearGradient id="lataria" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#d9e2ec"/><stop offset="1" stop-color="#8fa3b8"/>
+            </linearGradient>
+          </defs>
+          <path d="M30 118 C30 98 46 92 70 88 L118 82 C140 58 168 44 210 42 C252 40 282 52 304 78 L344 86 C366 90 374 102 374 118 L374 126 L30 126 Z" fill="url(#lataria)"/>
+          <path d="M132 82 C150 62 172 52 206 51 L208 82 Z" fill="#33475e"/>
+          <path d="M218 51 C250 51 272 60 292 80 L218 82 Z" fill="#33475e"/>
+          <rect x="344" y="96" width="22" height="9" rx="4" fill="#ffd36e"/>
+          <rect x="34" y="98" width="16" height="8" rx="3" fill="#ff6b6b"/>
+          <circle cx="100" cy="126" r="25" fill="#1d2633"/><circle cx="100" cy="126" r="11" fill="#9fb2c6"/>
+          <circle cx="302" cy="126" r="25" fill="#1d2633"/><circle cx="302" cy="126" r="11" fill="#9fb2c6"/>
+        </svg>
+        <div class="feixe" aria-hidden="true"></div>
+      </div>
+      <figcaption>
+        <span class="etq e1"><b>model</b> compact hatch · <em>97%</em></span>
+        <span class="etq e2"><b>color</b> silver · <em>94%</em></span>
+        <span class="etq e3 ok">✓ matches the registry</span>
+      </figcaption>
+    </figure>
+  </div>
+  <a class="rolar" href="#video" aria-label="Scroll to the video">↓</a>
+</section>
+
+<!-- ============================================================ VIDEO -->
+<section class="secao video" id="video">
+  <div class="cab">
+    <p class="kicker">The project in 3 minutes</p>
+    <h2>Animated summary video</h2>
+    <p class="sub">Problem, proposal, data, results and next steps, narrated and captioned in English. No real inspection photo appears: only illustrations and aggregate numbers.</p>
+  </div>
+  <figure class="player revelar">
+    <video controls preload="metadata" playsinline poster="../assets/video/pampavision_3min_en_poster.jpg">
+      <source src="../assets/video/pampavision_3min_en.mp4" type="video/mp4">
+      <track kind="captions" src="../assets/video/pampavision_3min_en.vtt" srclang="en" label="English" default>
+      Your browser cannot play this video. <a href="../assets/video/pampavision_3min_en.mp4">Download the MP4</a>.
+    </video>
+    <figcaption>
+      <span>3 min · 1080p · English captions</span>
+      <span>Made with AI support: script, screens and animation generated by code with Claude; neural English voice (Microsoft); assembly with ffmpeg.</span>
+    </figcaption>
+  </figure>
+</section>
+
+<!-- ============================================================ CONTEXT -->
+<section class="secao" id="contexto">
+  <div class="cab">
+    <p class="kicker">01 · Context</p>
+    <h2>Vehicle inspection produces photos every day</h2>
+    <p class="sub">During an inspection, the inspector photographs the car, front and back, and records the vehicle's data. Today, checking whether the photo matches the registry is human work, photo by photo.</p>
+  </div>
+  <div class="cartoes c3 revelar">
+    <article class="cartao">
+      <div class="ico">📷</div>
+      <h3>Standardized photos</h3>
+      <p>Front diagonal and rear diagonal of each vehicle, taken with the inspector's phone.</p>
+    </article>
+    <article class="cartao">
+      <div class="ico">🗂️</div>
+      <h3>One record per car</h3>
+      <p>Make, model and color are registered. That is the reference the photo must be checked against.</p>
+    </article>
+    <article class="cartao">
+      <div class="ico">👀</div>
+      <h3>Manual checking</h3>
+      <p>Comparing photo and registry at high volume is slow and prone to fatigue. That is where computer vision helps.</p>
+    </article>
+  </div>
+</section>
+
+<!-- ============================================================ PROBLEM -->
+<section class="secao alt" id="problema">
+  <div class="cab">
+    <p class="kicker">02 · Problem</p>
+    <h2>Why it is not simple</h2>
+    <p class="sub">Recognizing a car in an inspection photo seems easy, but the real collection showed challenges that a lab dataset does not have.</p>
+  </div>
+  <div class="desafios revelar">
+    <div class="desafio"><span class="n">38</span><h3>Very similar models</h3><p>Hatchback and sedan of the same family (Onix and Prisma, HB20 and HB20S) differ only at the rear.</p></div>
+    <div class="desafio"><span class="n">☀</span><h3>Color depends on light</h3><p>Shadow, reflections and yellow light make silver look white and black look gray.</p></div>
+    <div class="desafio"><span class="n">35%</span><h3>Non-standard photos</h3><p>In the pre-screening, 20,957 of 60,042 photos had the hood open; there are photos of photos and photos without the car.</p></div>
+    <div class="desafio"><span class="n">≠</span><h3>The registry also errs</h3><p>The registered color can be wrong for an entire model: a model registered as “beige” appears white in 92.8% of the photos.</p></div>
+    <div class="desafio"><span class="n">🔒</span><h3>Personal data</h3><p>License plate and chassis number are personal data (Brazil's LGPD). The photos cannot leave the responsible agency's environment.</p></div>
+    <div class="desafio"><span class="n">1↔2</span><h3>The same car in two photos</h3><p>Front and rear of the same vehicle cannot be split between training and test, otherwise the result is inflated.</p></div>
+  </div>
+  <blockquote class="pergunta revelar">Research question: <b>can a lightweight classifier recognize model and color in real inspection photos accurately enough to support checking the registry?</b></blockquote>
+</section>
+
+<!-- ============================================================ PROPOSAL -->
+<section class="secao" id="proposta">
+  <div class="cab">
+    <p class="kicker">03 · Proposal</p>
+    <h2>The registry gives the label, the AI checks</h2>
+    <p class="sub">Two independent classifiers, one for the model and one for the color, trained on the collection's own photos, labeled by the registry and curated.</p>
+  </div>
+  <div class="proposta revelar">
+    <div class="bloco">
+      <h3><span class="pilula azul">Model</span> which car is it?</h3>
+      <p>Whole-photo classification among 38 models from 9 makes, with the <b>YOLOv8n-cls</b> network, small enough to run even on a phone.</p>
+    </div>
+    <div class="bloco">
+      <h3><span class="pilula menta">Color</span> what color is it?</h3>
+      <p>A second, separate classifier for color. That way a color error does not contaminate the model, and vice versa.</p>
+    </div>
+    <div class="bloco">
+      <h3><span class="pilula ambar">Verification</span> does it match the registry?</h3>
+      <p>When the prediction confidently disagrees with the record, the photo is flagged for human review. The AI supports; it does not decide alone.</p>
+    </div>
+    <div class="bloco">
+      <h3><span class="pilula coral">Privacy</span> from the start</h3>
+      <p>Training and use inside the client's environment; plate and chassis hidden in the interface; the network weights do not go to third-party clouds.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================ HOW IT WORKS -->
+<section class="secao alt" id="como">
+  <div class="cab">
+    <p class="kicker">04 · How it works</p>
+    <h2>From the inspection photo to the check</h2>
+    <p class="sub">The path each photo takes. Hover or tap each step.</p>
+  </div>
+  <ol class="fluxo revelar">
+    <li tabindex="0"><span class="passo">1</span><h3>Photo</h3><p>Front and rear diagonal of the vehicle, as in the best-practice guide.</p></li>
+    <li tabindex="0"><span class="passo">2</span><h3>Pre-screening</h3><p>A vision-language model sets aside photos with the hood open or out of standard.</p></li>
+    <li tabindex="0"><span class="passo">3</span><h3>Curation</h3><p>Label from the registry, human review, front and rear paired by vehicle.</p></li>
+    <li tabindex="0"><span class="passo">4</span><h3>Training</h3><p>YOLOv8n-cls for model and for color, on GPU, with a 70/20/10 split by vehicle.</p></li>
+    <li tabindex="0"><span class="passo">5</span><h3>Prediction</h3><p>Model and color with the confidence of each, in milliseconds per photo.</p></li>
+    <li tabindex="0"><span class="passo">6</span><h3>Check</h3><p>Prediction × registry: whatever disagrees goes to a human.</p></li>
+  </ol>
+  <div class="ferramentas revelar">
+    <div class="tag">Python</div><div class="tag">PyTorch</div><div class="tag">Ultralytics YOLOv8</div><div class="tag">CLIP</div>
+    <div class="tag">Streamlit</div><div class="tag">CVAT · Label Studio</div><div class="tag">ONNX · Core ML</div><div class="tag">GPU NVIDIA H100</div>
+  </div>
+</section>
+
+<!-- ============================================================ PROGRESS -->
+<section class="secao" id="evolucao">
+  <div class="cab">
+    <p class="kicker">05 · Progress</p>
+    <h2>How the semester went</h2>
+    <p class="sub">Every project milestone, from August until today. Filter by type.</p>
+  </div>
+  <div class="filtros" role="group" aria-label="Filter milestones">
+    <button class="filtro ativo" data-tag="todos">All</button>
+    <button class="filtro" data-tag="decisão">Decisions</button>
+    <button class="filtro" data-tag="dados">Data</button>
+    <button class="filtro" data-tag="resultado">Results</button>
+    <button class="filtro" data-tag="ferramentas">Tools</button>
+    <button class="filtro" data-tag="entrega">Deliveries</button>
+    <button class="filtro" data-tag="ética">Ethics</button>
+  </div>
+  <div class="semestre" aria-hidden="true"><div class="barra"><span></span></div><p class="semestre-txt"></p></div>
+  <ol class="linha-tempo" id="linha-tempo"></ol>
+</section>
+
+<!-- ============================================================ RESULTS -->
+<section class="secao alt" id="resultados">
+  <div class="cab">
+    <p class="kicker">06 · Results</p>
+    <h2>What the November training showed</h2>
+    <p class="sub">Test with 7,414 photos the network had never seen, split by vehicle.</p>
+  </div>
+  <div class="metricas revelar">
+    <article class="metrica">
+      <h3>Vehicle model</h3>
+      <div class="anel" style="--p:95.1"><span>95.1%</span></div>
+      <ul>
+        <li><b>Macro F1</b> 0.951</li>
+        <li><b>38</b> classes · 500 epochs · 3.2 h</li>
+        <li>Hardest: <b>Onix</b> (F1 0.83) and <b>Prisma</b> (0.87), the hatchback and the sedan of the same family</li>
+      </ul>
+    </article>
+    <article class="metrica">
+      <h3>Color</h3>
+      <div class="anel menta" style="--p:93.6"><span>93.6%</span></div>
+      <ul>
+        <li><b>Macro F1</b> 0.882 over the 12 colors present</li>
+        <li>Early stopping at epoch 476</li>
+        <li>Rare colors (custom, pink, purple) remain a challenge</li>
+      </ul>
+    </article>
+    <article class="metrica">
+      <h3>Make</h3>
+      <div class="anel ambar" style="--p:99.4"><span>99.4%</span></div>
+      <ul>
+        <li>Derived from the model prediction</li>
+        <li><b>9</b> makes</li>
+        <li>Almost every model error stays within the same make</li>
+      </ul>
+    </article>
+  </div>
+
+  <h3 class="tit-funil revelar">From the raw archive to the training set</h3>
+  <div class="funil revelar" id="funil"></div>
+  <p class="nota revelar">Of the photos evaluated in the pre-screening, those with the hood closed were kept; the import joins the front and the rear of the same car, which is why the number goes up again.</p>
+</section>
+
+<!-- ============================================================ IN PRACTICE -->
+<section class="secao" id="pratica">
+  <div class="cab">
+    <p class="kicker">07 · In practice</p>
+    <h2>Tools and good practices</h2>
+    <p class="sub">Beyond the model, the project produced material for annotators and for photographers.</p>
+  </div>
+  <div class="dupla revelar">
+    <article class="cartao largo">
+      <h3>Annotation tools compared</h3>
+      <p>CVAT, Label Studio and Roboflow were installed or studied and tested with the same 92 public photos. The main difference is where each one stores the attribute (model, color, view):</p>
+      <table class="comp">
+        <thead><tr><th></th><th>CVAT</th><th>Label Studio</th><th>Roboflow</th></tr></thead>
+        <tbody>
+          <tr><td>Runs</td><td class="ok">on premises</td><td class="ok">on premises</td><td class="nao">in the cloud</td></tr>
+          <tr><td>Attribute</td><td class="ok">on the label</td><td>on the region</td><td class="nao">class only</td></tr>
+          <tr><td>Pre-annotation</td><td>file or function</td><td class="ok">with source</td><td>vendor's</td></tr>
+          <tr><td>Review</td><td class="ok">stages</td><td class="nao">paid only</td><td>per batch</td></tr>
+        </tbody>
+      </table>
+      <p class="mini">Agreement between the two annotations: 81.5% on the model, kappa 0.80.</p>
+    </article>
+    <article class="cartao largo">
+      <h3>Photo capture guide</h3>
+      <p>A one-page guide for the inspector: phone, vehicle, location, image and lighting. Also in versions for building inspection, agriculture, documents and health (in Portuguese).</p>
+      <a href="../assets/img/guia_pampavision.png" target="_blank" rel="noopener" class="guia">
+        <img src="../assets/img/guia_pampavision.png" alt="Best-practice guide for photo capture in vehicle inspection (in Portuguese)" loading="lazy">
+      </a>
+    </article>
+  </div>
+</section>
+
+<!-- ============================================================ ETHICS -->
+<section class="secao alt" id="etica">
+  <div class="cab">
+    <p class="kicker">08 · Ethics and LGPD</p>
+    <h2>Care with the data</h2>
+  </div>
+  <div class="cartoes c4 revelar">
+    <article class="cartao"><div class="ico">🏛️</div><h3>Authorization</h3><p>Academic use follows the data controller's procedure; anonymizing does not replace authorization.</p></article>
+    <article class="cartao"><div class="ico">🖥️</div><h3>Data stays with the client</h3><p>The collection's photos do not leave the agency's environment. Tests with external vendors use public photos.</p></article>
+    <article class="cartao"><div class="ico">🫥</div><h3>Masking</h3><p>Plate and chassis appear hidden in the interface; no personal data on this site.</p></article>
+    <article class="cartao"><div class="ico">🧪</div><h3>Traceability</h3><p>Every dataset and every training run is versioned and recorded, so the result can be reproduced.</p></article>
+  </div>
+  <p class="nota">The images on this site are illustrations and diagrams. No photo from the collection is published.</p>
+</section>
+
+<!-- ============================================================ NEXT STEPS -->
+<section class="secao" id="proximos">
+  <div class="cab">
+    <p class="kicker">09 · Next steps</p>
+    <h2>What comes next</h2>
+    <p class="sub">The list comes from the professor's feedback (37 activities) and from decisions with the advisors.</p>
+  </div>
+  <div class="passos revelar" id="passos"></div>
+</section>
+
+</main>
+
+<footer class="rodape">
+  <div>
+    <p class="marca"><img src="../assets/img/favicon.svg" alt="" width="22" height="22"> Pampa<b>Vision</b></p>
+    <p>Carlos André da Silva · Master's in Software Engineering · PPGES/Unipampa (Brazil)</p>
+    <p>Course AL5162 (LIAA) · 2026/2</p>
+  </div>
+  <p class="atualizado">Updated on <span id="atualizado"></span> · <a href="#inicio">back to top ↑</a></p>
+</footer>
+
+<script src="../assets/js/dados.en.js"></script>
+<script src="../assets/js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,73 @@
+WEBVTT
+
+00:00:00.350 --> 00:00:09.710
+Hello! This is PampaVision, a master's project in the LIAA course at PPGES, Unipampa, in Brazil.
+
+00:00:10.010 --> 00:00:17.430
+In the next three minutes, I'll show you the problem, the proposal, the data, the results, and what comes next.
+
+00:00:18.130 --> 00:00:23.120
+Every vehicle inspection produces photos of the front and the back of the car.
+
+00:00:23.420 --> 00:00:32.950
+Someone has to check whether the model and the color in the photo match the registry. Done by hand, that is slow, tiring, and error-prone.
+
+00:00:33.650 --> 00:00:37.470
+The proposal is to use computer vision for this check.
+
+00:00:37.770 --> 00:00:50.490
+The network recognizes the model and the color in the photo and compares them with the registry. When they match, the inspection moves on. When they don't, the photo goes to a human reviewer.
+
+00:00:51.190 --> 00:00:56.660
+We started with 188,000 photos, in 38 packages.
+
+00:00:56.960 --> 00:01:03.220
+A vision-language model, running on an internal server, selected the photos with the hood closed.
+
+00:01:03.520 --> 00:01:12.470
+After curation, we kept 74,149 photos of 38 models, 9 makes, and 13 colors.
+
+00:01:13.170 --> 00:01:16.070
+And curating data teaches a lot.
+
+00:01:16.370 --> 00:01:27.310
+We found photos of photos, photos without the car, and registry colors that don't match reality: an entire model registered as beige shows up white in almost every photo.
+
+00:01:27.610 --> 00:01:31.980
+So we paired the photos by vehicle and recorded every decision.
+
+00:01:32.680 --> 00:01:40.360
+For recognition, we trained two YOLO classification networks: one for the model, the other for the color.
+
+00:01:40.660 --> 00:01:46.920
+Training ran on an H100 GPU: 500 epochs in just over three hours.
+
+00:01:47.620 --> 00:01:57.600
+On the test set, with more than 7,000 unseen photos, accuracy was 95.1% for the model and 93.6% for the color.
+
+00:01:57.900 --> 00:02:02.270
+And the make is right in 99.4% of cases.
+
+00:02:02.970 --> 00:02:09.210
+Notice where the network fails: almost 9 out of 10 model errors stay within the same make.
+
+00:02:09.510 --> 00:02:17.330
+The biggest confusion is between hatchback and sedan, like the Onix and the Prisma, which look almost identical from the front.
+
+00:02:18.030 --> 00:02:24.800
+We also compared three annotation tools: CVAT, Label Studio, and Roboflow.
+
+00:02:25.100 --> 00:02:29.490
+And we created one-page guides for the people who take the photos.
+
+00:02:30.190 --> 00:02:37.440
+Looking ahead to the field, we built a mobile app prototype and this website, which follows the project's progress.
+
+00:02:37.740 --> 00:02:44.560
+Throughout, we follow Brazil's data protection law: license plates and chassis numbers never appear.
+
+00:02:45.260 --> 00:02:52.460
+The next steps are to validate in the field, review conflicting labels, and better separate hatchback from sedan.
+
+00:02:52.760 --> 00:02:56.190
+Thank you for watching, and see you next time!

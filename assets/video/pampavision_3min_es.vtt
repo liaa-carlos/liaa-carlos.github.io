@@ -1,0 +1,73 @@
+WEBVTT
+
+00:00:00.350 --> 00:00:08.800
+¡Hola! Este es PampaVision, un proyecto de maestría en la materia LIAA, del PPGES de la Unipampa, en Brasil.
+
+00:00:09.100 --> 00:00:16.830
+En los próximos tres minutos, voy a mostrar el problema, la propuesta, los datos, los resultados y lo que viene.
+
+00:00:17.530 --> 00:00:22.690
+Cada inspección vehicular genera fotos del frente y de la parte trasera del auto.
+
+00:00:22.990 --> 00:00:33.050
+Alguien tiene que verificar si el modelo y el color de la foto coinciden con el registro. Hecho a mano, es lento, cansador y propenso a errores.
+
+00:00:33.750 --> 00:00:38.620
+La propuesta es usar visión por computadora para hacer esa verificación.
+
+00:00:38.920 --> 00:00:51.090
+La red reconoce el modelo y el color en la foto y los compara con el registro. Cuando coinciden, la inspección sigue. Cuando no, la foto pasa a una revisión humana.
+
+00:00:51.790 --> 00:00:56.880
+Empezamos con 188 mil fotos, en 38 paquetes.
+
+00:00:57.180 --> 00:01:03.590
+Un modelo de visión y lenguaje, en un servidor interno, separó las fotos con el capó cerrado.
+
+00:01:03.890 --> 00:01:12.960
+Después de la curaduría, quedaron 74.149 fotos, de 38 modelos, 9 marcas y 13 colores.
+
+00:01:13.660 --> 00:01:16.350
+Y curar datos enseña mucho.
+
+00:01:16.650 --> 00:01:27.640
+Encontramos fotos de fotos, fotos sin el auto y colores del registro que no coinciden con la realidad: un modelo entero registrado como beige aparece blanco en casi todas las fotos.
+
+00:01:27.940 --> 00:01:32.640
+Por eso emparejamos las fotos por vehículo y registramos cada decisión.
+
+00:01:33.340 --> 00:01:40.060
+Para el reconocimiento, entrenamos dos redes YOLO de clasificación: una para el modelo y otra para el color.
+
+00:01:40.360 --> 00:01:46.580
+El entrenamiento corrió en una GPU H100: 500 épocas en poco más de tres horas.
+
+00:01:47.280 --> 00:01:57.290
+En la prueba, con más de 7 mil fotos inéditas, el acierto fue del 95,1 % en el modelo y del 93,6 % en el color.
+
+00:01:57.590 --> 00:02:02.770
+Y la marca es correcta en el 99,4 % de los casos.
+
+00:02:03.470 --> 00:02:10.380
+Fíjense dónde se equivoca la red: casi 9 de cada 10 errores de modelo quedan dentro de la misma marca.
+
+00:02:10.680 --> 00:02:17.380
+La mayor confusión es entre hatch y sedán, como el Onix y el Prisma, que de frente son casi iguales.
+
+00:02:18.080 --> 00:02:23.960
+También comparamos tres herramientas de anotación: CVAT, Label Studio y Roboflow.
+
+00:02:24.260 --> 00:02:29.060
+Y creamos guías de una página para orientar a quienes toman las fotos.
+
+00:02:29.760 --> 00:02:37.420
+Pensando en el campo, construimos un prototipo de aplicación para celular y este sitio, que acompaña la evolución del proyecto.
+
+00:02:37.720 --> 00:02:44.420
+En todo, seguimos la ley de protección de datos de Brasil: la patente y el chasis nunca aparecen.
+
+00:02:45.120 --> 00:02:52.180
+Los próximos pasos son validar en campo, revisar las etiquetas en conflicto y separar mejor el hatch del sedán.
+
+00:02:52.480 --> 00:02:55.860
+¡Gracias por su atención, y hasta la próxima!
