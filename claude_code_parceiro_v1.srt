@@ -1,0 +1,131 @@
+1
+00:00:00,350 --> 00:00:08,750
+Olá, colegas! Hoje eu quero mostrar como o Claude Code virou um parceiro de trabalho durante todo o meu mestrado.
+
+2
+00:00:09,050 --> 00:00:17,710
+São dicas práticas, com exemplos reais do projeto PampaVision: o que funcionou, o que deu errado e o que eu faria de novo.
+
+3
+00:00:18,410 --> 00:00:26,190
+Primeiro, o que é o Claude Code. É um agente de programação que roda no terminal e no VS Code.
+
+4
+00:00:26,490 --> 00:00:37,150
+Diferente de um chat, ele age no seu projeto: lê arquivos, roda comandos, edita código e cria documentos, pedindo permissão para as ações sensíveis.
+
+5
+00:00:37,850 --> 00:00:43,490
+Em pouco mais de três meses, de agosto a novembro, o volume foi grande.
+
+6
+00:00:43,790 --> 00:00:56,940
+São 110 scripts em Python, com mais de 44 mil linhas, 66 arquivos de teste, 28 apresentações e 274 entregas registradas num quadro de acompanhamento.
+
+7
+00:00:57,640 --> 00:01:01,430
+O fluxo que mais funcionou tem cinco passos.
+
+8
+00:01:01,730 --> 00:01:17,760
+Eu descrevo o que preciso. O agente propõe opções, com letras e uma recomendação. Eu escolho. Ele executa e confere o resultado. E, no fim, registra a entrega e atualiza a memória.
+
+9
+00:01:18,060 --> 00:01:23,940
+Repare: a decisão continua comigo. O agente acelera o resto.
+
+10
+00:01:24,640 --> 00:01:28,360
+Dica número um: use memória persistente.
+
+11
+00:01:28,660 --> 00:01:37,640
+O Claude Code guarda um índice e um arquivo para cada fato importante: quem eu sou, as regras do projeto e o estado de cada tarefa.
+
+12
+00:01:37,940 --> 00:01:43,530
+Cada correção minha vira uma regra, e na sessão seguinte ele já começa sabendo.
+
+13
+00:01:44,230 --> 00:01:50,370
+Dica dois: escreva regras de segurança, de preferência antes do primeiro susto.
+
+14
+00:01:50,670 --> 00:01:58,730
+No meu caso, testes automáticos gravaram em dados reais três vezes, e foi preciso limpar 55 entradas.
+
+15
+00:01:59,030 --> 00:02:07,810
+Hoje as regras são claras: teste nunca escreve no real, treino pesado só pelo botão, e nada é apagado sem confirmação.
+
+16
+00:02:08,510 --> 00:02:12,570
+Dica três: tenha uma fonte única para os números.
+
+17
+00:02:12,870 --> 00:02:25,090
+Com dezenas de documentos, os mesmos números começaram a divergir entre versões. A solução foi uma ficha gerada a partir dos dados, que o agente consulta antes de escrever.
+
+18
+00:02:25,390 --> 00:02:29,180
+Assim ele não precisa lembrar, e não inventa.
+
+19
+00:02:29,880 --> 00:02:36,020
+Dica quatro: gere slides e documentos por código, sempre em versões novas.
+
+20
+00:02:36,320 --> 00:02:48,700
+A apresentação principal chegou à décima versão. Quando o professor devolveu 49 apontamentos, refazer tudo virou questão de minutos, porque cada slide sai de um script.
+
+21
+00:02:49,400 --> 00:02:54,820
+Dica cinco: peça para o agente conferir o resultado com os próprios olhos.
+
+22
+00:02:55,120 --> 00:03:08,780
+Ele tira capturas de tela e extrai quadros dos vídeos. Foi assim que pegamos uma barra de progresso sempre cheia, contadores capturados no meio da animação e símbolos que viravam quadradinhos no PDF.
+
+23
+00:03:09,480 --> 00:03:13,270
+Dica seis: deixe o que é pesado com você.
+
+24
+00:03:13,570 --> 00:03:27,130
+No treino em GPU H100, o agente preparou pacotes e scripts, eu disparei pelo botão, e ele auditou os resultados. E descobriu que um número estranho no log era erro do nosso próprio script.
+
+25
+00:03:27,830 --> 00:03:31,930
+Dica sete: aproveite as habilidades prontas.
+
+26
+00:03:32,230 --> 00:03:44,660
+As skills ensinam o agente a gerar PowerPoint, Word, PDF e planilhas com qualidade, e as conexões por MCP ligam o agente a outros serviços, como documentos e agendas.
+
+27
+00:03:45,360 --> 00:03:59,880
+Alguns frutos dessa parceria: o site do projeto, criado e publicado no mesmo dia; vídeos narrados como este, gerados por código; a instalação do CVAT no Docker; e guias visuais de registro fotográfico.
+
+28
+00:04:00,580 --> 00:04:02,720
+E como começar?
+
+29
+00:04:03,020 --> 00:04:17,470
+Instale, abra o terminal na pasta do projeto e use o comando barra init, que cria um arquivo com as regras do projeto. Depois, peça para ele ler e resumir o que encontrou, e comece por tarefas pequenas.
+
+30
+00:04:18,170 --> 00:04:20,880
+Agora, os cuidados.
+
+31
+00:04:21,180 --> 00:04:36,520
+Confira tudo o que ele declarar como pronto. Verifique as referências bibliográficas sugeridas. Dados pessoais e fotos sensíveis não saem do ambiente controlado. E acompanhe o custo de cada sessão.
+
+32
+00:04:37,220 --> 00:04:45,720
+Para fechar, três lições: contexto vale mais que prompt; peça opções e verifique sempre; e registre tudo.
+
+33
+00:04:46,020 --> 00:04:50,150
+Obrigado, e bom trabalho com os seus agentes!
