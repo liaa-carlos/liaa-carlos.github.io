@@ -284,3 +284,12 @@ img { max-width: 100%; display: block; }
 .marca { flex-shrink: 0; }
 @media (max-width: 1320px) and (min-width: 1001px) { .links { gap: 0; } .links a { font-size: 13.5px; padding: 6px 7px; } .nav { gap: 10px; } }
 @media (max-width: 760px) { .idiomas { margin-left: 0; } .idiomas a { padding: 7px 6px; } }
+/* ---------------------------------------------------------------- música */
+.musica { max-width: 980px; margin: 22px auto 0; display: flex; flex-wrap: wrap; align-items: center; gap: 12px 20px;
+  padding: 16px 20px; border: 1px solid var(--borda); border-radius: var(--raio); background: var(--superficie); box-shadow: var(--sombra); }
+.musica-txt { flex: 1 1 260px; }
+.musica-txt .kicker { margin-bottom: 6px; }
+.musica-txt p:last-child { margin: 0; color: var(--tinta-suave); font-size: 15px; }
+.musica audio { flex: 1 1 280px; width: 100%; max-width: 420px; }
+.musica-link { font-size: 14px; color: var(--menta); text-decoration: none; font-weight: 600; }
+.musica-link:hover { text-decoration: underline; }
