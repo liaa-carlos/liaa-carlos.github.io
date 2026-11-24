@@ -293,3 +293,13 @@ img { max-width: 100%; display: block; }
 .musica audio { flex: 1 1 280px; width: 100%; max-width: 420px; }
 .musica-link { font-size: 14px; color: var(--menta); text-decoration: none; font-weight: 600; }
 .musica-link:hover { text-decoration: underline; }
+
+/* ---------------------------------------------------------------- baixar */
+.baixar-acoes { display: flex; flex-wrap: wrap; gap: 12px; justify-content: center; margin: 28px auto 10px; }
+.btn-baixar { display: inline-flex; align-items: center; gap: 8px; padding: 13px 22px; border-radius: 12px; font-weight: 600;
+  text-decoration: none; border: 1px solid var(--borda); background: var(--superficie); color: var(--tinta); box-shadow: var(--sombra);
+  transition: transform .2s; }
+.btn-baixar:hover { transform: translateY(-2px); }
+.btn-baixar.primario { background: var(--menta); border-color: var(--menta); color: #04261c; }
+.btn-baixar small { font-weight: 400; opacity: .75; }
+#baixar .nota { text-align: center; }

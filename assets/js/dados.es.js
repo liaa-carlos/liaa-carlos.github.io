@@ -5,7 +5,7 @@
    situación: feito, andamento, planejado
    ========================================================================== */
 
-window.ATUALIZADO = "17/11/2026";
+window.ATUALIZADO = "24/11/2026";
 
 window.SEMESTRE = { inicio: "2026-08-17", fim: "2026-12-18" };
 
